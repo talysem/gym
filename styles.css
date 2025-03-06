@@ -82,10 +82,95 @@ button {
     align-items: center;
 }
 
+.screen:has(#config) {
+    padding: 40px 20px;
+}
+
 .screenInside {
     width: 94%;
     max-width: 350px;
 }
+
+.mainActionButton {
+    width: 64px;
+    height: 64px;
+    position: fixed;
+    right: 20px;
+    bottom: 100px;
+    background-color: var(--mainColor);
+    border: solid 1px var(--colorWhite20);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* UNIVERSAL UNIVERSAL UNIVERSAL */
+
+/* CONFIG CONFIG CONFIG */
+
+#config {
+    display: flex;
+    flex-flow: column;
+    gap: 30px;
+
+    & input {
+        background-color: var(--mainColor20);
+        border-radius: 10px;
+        border: solid 1px var(--colorWhite20);
+        height: 40px;
+        padding: 0 10px;
+        color: #FFF;
+        font-size: 16px;
+        
+        &::placeholder {
+            font-size: 16px;
+            color: #FFF;
+            opacity: .5;
+        }
+    }
+
+    & button {
+        background-color: var(--mainColor);
+        border: solid 1px var(--colorWhite20);
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+    }
+}
+
+#config_title {
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+
+    & h2 {
+        color: #FFF;
+        font-size: 32px;
+        font-weight: bold;
+    }
+
+    & button {
+        background-color: var(--mainColor20);
+        border: solid 1px var(--colorWhite20);
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+    }
+}
+
+
+/* CONFIG CONFIG CONFIG */
+
+/* HOME HOME HOME */
 
 #home {
     display: flex;
