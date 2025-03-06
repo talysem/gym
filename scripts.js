@@ -14,7 +14,7 @@ function MyKO() {
 
     // fim das informações do usuario
 
-    self.actualPage = ko.observable(10)
+    self.actualPage = ko.observable(0)
 
     self.openThisPage = function (page) {
         self.actualPage(page)
