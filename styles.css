@@ -22,6 +22,7 @@
 * {
     box-sizing: border-box;
     margin: 0;
+    padding: 0;
     user-select: none;
     -webkit-tap-highlight-color: none;
     font-family: 'Poppins';
@@ -31,13 +32,59 @@
 body {
     width: 100%;
     height: 100dvh;
-    background: linear-gradient(135deg, rgba(41,41,41,1) 0%, rgba(0,0,0,1) 100%);
+    background: linear-gradient(135deg, rgba(30, 30, 30, 1) 0%, rgba(0, 0, 0, 1) 100%);
+}
+
+button {
+    border: none;
+    background-color: unset;
+    cursor: pointer;
+}
+
+#header {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 80px;
+    padding: 20px;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+
+    & h1 {
+        color: #FFF;
+        font-size: 20px;
+        font-weight: bold;
+        opacity: .3;
+    }
+
+    & button {
+        background-color: var(--mainColor20);
+        border: solid 1px var(--colorWhite20);
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+    }
 }
 
 .screen {
     width: 100%;
     min-height: 100dvh;
     padding: 80px 20px;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.screenInside {
+    width: 94%;
+    max-width: 350px;
 }
 
 #home {
@@ -62,4 +109,71 @@ body {
     display: flex;
     position: relative;
     min-height: 190px;
+    background-image: url(imgs/background-grade.png);
+    background-size: 420px;
+    background-position: 50%;
+}
+
+#fake_home_bloco_meta {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    position: absolute;
+}
+
+#home_bloco_meta_progressBar {
+    position: absolute;
+    left: -200px;
+    animation: progressBarAnimation 24s infinite ease-in-out;
+}
+
+@keyframes progressBarAnimation {
+    0% {
+        top: -0px;
+    }
+
+    50% {
+        top: -240px;
+    }
+
+    100% {
+        top: -0px;
+    }
+}
+
+#home_bloco_meta_inProgressMeta {
+    position: absolute;
+    z-index: 1;
+    color: #FFF;
+    font-size: 20px;
+    text-align: left;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    gap: 15px;
+    top: -13px;
+    left: -20px;
+
+    & h2 {
+        font-size: 100px;
+    }
+}
+
+#home_bloco_meta_finalMeta {
+    position: absolute;
+    z-index: 1;
+    color: #FFF;
+    font-size: 20px;
+    text-align: right;
+    display: flex;
+    flex-flow: row-reverse;
+    align-items: center;
+    gap: 15px;
+    bottom: -13px;
+    right: -20px;
+
+    & h2 {
+        font-size: 100px;
+    }
 }
