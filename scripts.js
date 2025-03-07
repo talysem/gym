@@ -1,44 +1,66 @@
 function MyKO() {
-    self = this;
+    const self = this;
 
+    // Informações dos treinos
+    self.treinos = ko.observableArray([]);
+
+    // Informações do usuário
     self.user = {
-        name: ko.observable('' || 'você'),
+        name: ko.observable('você'),
         lastName: ko.observable(''),
         age: ko.observable(''),
         goal: ko.observable(0),
-        currentGoal: ko.observable(0)
-    }
+    };
 
-    self.user.goalText = ko.computed(() => self.user.goal().toString().padStart(3, '0'));
-    self.user.currentGoalText = ko.computed(() => self.user.currentGoal().toString().padStart(3, '0'));
+    // Informações das metas
+    self.meta = ko.observable(0);
+    self.metaTexto = ko.computed(() => self.meta().toString().padStart(3, '0'));
 
-    // fim das informações do usuario
+    self.treinosInseridos = ko.observable(0);
 
-    self.actualPage = ko.observable(0)
+    self.metaAtingida = ko.computed(() => self.treinos().length);
+    self.metaAtingidaReal = ko.computed(() => self.metaAtingida() + self.treinosInseridos());
+    self.metaAtingidaRealTexto = ko.computed(() => self.metaAtingidaReal().toString().padStart(3, '0'));
 
+    // Navegação
+    self.actualPage = ko.observable(0);
     self.openThisPage = function (page) {
-        self.actualPage(page)
-    }
+        self.actualPage(page);
+    };
 
-
-
-
-
-
+    // Teste - adiciona um treino na lista
     self.teste = function () {
-        self.user.currentGoal(self.user.currentGoal() + 1)
-    }
+        self.treinos.push({}); // Adiciona um treino fictício
+    };
 
-    self.tempName = ko.observable('')
+    // Edição do nome do usuário
+    self.tempName = ko.observable('');
     self.saveName = function () {
-        if (self.tempName().length > 0) {
-            if (self.tempName() == 'gil' || self.tempName() == 'Gil' || self.tempName() == 'Gilvane' || self.tempName() == 'gilvane') {
-                self.tempName('Nojento')
-            }
-            self.user.name(self.tempName())
+        if (self.tempName().trim().length > 0) {
+            self.user.name(self.tempName().trim());
         }
-        self.tempName('')
-    }
+        self.tempName('');
+    };
+
+    // Edição da meta
+    self.tempMeta = ko.observable('');
+    self.saveMeta = function () {
+        const value = parseInt(self.tempMeta(), 10);
+        if (!isNaN(value)) {
+            self.meta(value);
+        }
+        self.tempMeta('');
+    };
+
+    // Edição do número de treinos inseridos
+    self.tempTreinosInseridos = ko.observable('');
+    self.savetreinosInseridos = function () {
+        const value = parseInt(self.tempTreinosInseridos(), 10);
+        if (!isNaN(value)) {
+            self.treinosInseridos(value);
+        }
+        self.tempTreinosInseridos('');
+    };
 }
 
 ko.applyBindings(new MyKO());

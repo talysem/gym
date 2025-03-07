@@ -15,6 +15,8 @@
 
 <body>
 
+    <!--HEADER HEADER HEADER-->
+
     <div id="header" data-bind="visible: actualPage() != 10">
         <h1>t4.Gym</h1>
 
@@ -27,9 +29,56 @@
         </button>
     </div>
 
+    <!--HEADER HEADER HEADER-->
+
+
+
+    <!--MENU MENU MENU-->
+
+    <div id="menu" data-bind="visible: actualPage() != 10">
+        <div class="menu_item"
+            data-bind="css: { menu_itemSelected: actualPage() == 0}, click: () => { openThisPage(0) }">
+            <svg width="auto" height="auto" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M10.1563 20.3088C8.77301 20.3088 7.47301 20.0463 6.25634 19.5213C5.03967 18.9963 3.98134 18.2838 3.08134 17.3838C2.18134 16.4838 1.46884 15.4255 0.943842 14.2088C0.418842 12.9922 0.156342 11.6922 0.156342 10.3088C0.156342 8.9255 0.418842 7.6255 0.943842 6.40884C1.46884 5.19217 2.18134 4.13384 3.08134 3.23384C3.98134 2.33384 5.03967 1.62134 6.25634 1.09634C7.47301 0.571338 8.77301 0.308838 10.1563 0.308838C11.5397 0.308838 12.8397 0.571338 14.0563 1.09634C15.273 1.62134 16.3313 2.33384 17.2313 3.23384C18.1313 4.13384 18.8438 5.19217 19.3688 6.40884C19.8938 7.6255 20.1563 8.9255 20.1563 10.3088C20.1563 11.6922 19.8938 12.9922 19.3688 14.2088C18.8438 15.4255 18.1313 16.4838 17.2313 17.3838C16.3313 18.2838 15.273 18.9963 14.0563 19.5213C12.8397 20.0463 11.5397 20.3088 10.1563 20.3088ZM10.1563 18.3088C12.3897 18.3088 14.2813 17.5338 15.8313 15.9838C17.3813 14.4338 18.1563 12.5422 18.1563 10.3088C18.1563 8.0755 17.3813 6.18384 15.8313 4.63384C14.2813 3.08384 12.3897 2.30884 10.1563 2.30884C7.92301 2.30884 6.03134 3.08384 4.48134 4.63384C2.93134 6.18384 2.15634 8.0755 2.15634 10.3088C2.15634 12.5422 2.93134 14.4338 4.48134 15.9838C6.03134 17.5338 7.92301 18.3088 10.1563 18.3088ZM10.1563 16.3088C8.48968 16.3088 7.07301 15.7255 5.90634 14.5588C4.73967 13.3922 4.15634 11.9755 4.15634 10.3088C4.15634 8.64217 4.73967 7.2255 5.90634 6.05884C7.07301 4.89217 8.48968 4.30884 10.1563 4.30884C11.823 4.30884 13.2397 4.89217 14.4063 6.05884C15.573 7.2255 16.1563 8.64217 16.1563 10.3088C16.1563 11.9755 15.573 13.3922 14.4063 14.5588C13.2397 15.7255 11.823 16.3088 10.1563 16.3088ZM10.1563 14.3088C11.2563 14.3088 12.198 13.9172 12.9813 13.1338C13.7647 12.3505 14.1563 11.4088 14.1563 10.3088C14.1563 9.20884 13.7647 8.26717 12.9813 7.48384C12.198 6.7005 11.2563 6.30884 10.1563 6.30884C9.05634 6.30884 8.11468 6.7005 7.33134 7.48384C6.54801 8.26717 6.15634 9.20884 6.15634 10.3088C6.15634 11.4088 6.54801 12.3505 7.33134 13.1338C8.11468 13.9172 9.05634 14.3088 10.1563 14.3088ZM10.1563 12.3088C9.60634 12.3088 9.13551 12.113 8.74384 11.7213C8.35218 11.3297 8.15634 10.8588 8.15634 10.3088C8.15634 9.75884 8.35218 9.288 8.74384 8.89634C9.13551 8.50467 9.60634 8.30884 10.1563 8.30884C10.7063 8.30884 11.1772 8.50467 11.5688 8.89634C11.9605 9.288 12.1563 9.75884 12.1563 10.3088C12.1563 10.8588 11.9605 11.3297 11.5688 11.7213C11.1772 12.113 10.7063 12.3088 10.1563 12.3088Z"
+                    fill="white" />
+            </svg>
+
+            <p>Meta</p>
+        </div>
+        <div class="menu_item"
+            data-bind="css: { menu_itemSelected: actualPage() == 1}, click: () => { openThisPage(1) }">
+            <svg width="auto" height="auto" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M12.0058 20.5659L10.6058 19.1659L14.1558 15.6159L5.65581 7.11587L2.10581 10.6659L0.705811 9.26587L2.10581 7.81587L0.705811 6.41587L2.80581 4.31587L1.40581 2.86587L2.80581 1.46587L4.25581 2.86587L6.35581 0.765869L7.75581 2.16587L9.20581 0.765869L10.6058 2.16587L7.05581 5.71587L15.5558 14.2159L19.1058 10.6659L20.5058 12.0659L19.1058 13.5159L20.5058 14.9159L18.4058 17.0159L19.8058 18.4659L18.4058 19.8659L16.9558 18.4659L14.8558 20.5659L13.4558 19.1659L12.0058 20.5659Z"
+                    fill="white" />
+            </svg>
+
+            <p>Registrar</p>
+        </div>
+        <div class="menu_item"
+            data-bind="css: { menu_itemSelected: actualPage() == 2}, click: () => { openThisPage(2) }">
+            <svg width="auto" height="auto" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M13.2851 18.9719L9.0351 14.7219L10.4351 13.3219L13.2851 16.1719L18.9351 10.5219L20.3351 11.9219L13.2851 18.9719ZM18.7851 9.04688H16.7851V4.04688H14.7851V7.04688H4.7851V4.04688H2.7851V18.0469H8.7851V20.0469H2.7851C2.2351 20.0469 1.76426 19.851 1.3726 19.4594C0.980929 19.0677 0.785095 18.5969 0.785095 18.0469V4.04688C0.785095 3.49688 0.980929 3.02604 1.3726 2.63438C1.76426 2.24271 2.2351 2.04688 2.7851 2.04688H6.9601C7.14343 1.46354 7.50176 0.984375 8.0351 0.609375C8.56843 0.234375 9.15176 0.046875 9.7851 0.046875C10.4518 0.046875 11.0476 0.234375 11.5726 0.609375C12.0976 0.984375 12.4518 1.46354 12.6351 2.04688H16.7851C17.3351 2.04688 17.8059 2.24271 18.1976 2.63438C18.5893 3.02604 18.7851 3.49688 18.7851 4.04688V9.04688ZM9.7851 4.04688C10.0684 4.04688 10.3059 3.95104 10.4976 3.75938C10.6893 3.56771 10.7851 3.33021 10.7851 3.04688C10.7851 2.76354 10.6893 2.52604 10.4976 2.33438C10.3059 2.14271 10.0684 2.04688 9.7851 2.04688C9.50176 2.04688 9.26426 2.14271 9.0726 2.33438C8.88093 2.52604 8.7851 2.76354 8.7851 3.04688C8.7851 3.33021 8.88093 3.56771 9.0726 3.75938C9.26426 3.95104 9.50176 4.04688 9.7851 4.04688Z"
+                    fill="white" />
+            </svg>
+
+            <p>Treinos</p>
+        </div>
+    </div>
+
+    <!--MENU MENU MENU-->
+
+
+
+    <!--TELAS TELAS TELAS-->
+
     <div class="screen" data-bind="visible: actualPage() == 10">
 
         <div id="config" class="screenInside">
+
+            <!--CONFIG TITLE | CONFIG TITLE | CONFIG TITLE-->
 
             <div id="config_title">
                 <h2>Configurações</h2>
@@ -41,14 +90,92 @@
                 </button>
             </div>
 
-            <input type="text" placeholder="Insira seu nome aqui" name="" id="" data-bind="value: tempName">
-            <button data-bind="click: saveName">
-                <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M6.54998 13.0125L0.849976 7.31249L2.27498 5.88749L6.54998 10.1625L15.725 0.987488L17.15 2.41249L6.54998 13.0125Z"
-                        fill="white" />
-                </svg>
-            </button>
+            <!--CONFIG TITLE | CONFIG TITLE | CONFIG TITLE-->
+
+            <!--USER NAME | USER NAME | USER NAME -->
+
+            <div id="config_item">
+
+                <div class="config_item_bloco">
+
+                    <div class="config_item_bloco_info">
+                        <h3>Seu nome:</h3>
+                        <p data-bind="text: user.name"></p>
+                    </div>
+
+                    <div class="config_item_bloco_inputPlace">
+                        <label for="">
+                            <p>Como podemos te chamar?</p>
+                            <input type="text" placeholder="Insira seu nome aqui" name="" id=""
+                                data-bind="value: tempName">
+                        </label>
+                        <button data-bind="click: saveName">
+                            <svg width="18" height="14" viewBox="0 0 18 14" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M6.54998 13.0125L0.849976 7.31249L2.27498 5.88749L6.54998 10.1625L15.725 0.987488L17.15 2.41249L6.54998 13.0125Z"
+                                    fill="white" />
+                            </svg>
+                        </button>
+                    </div>
+
+                </div>
+
+                <hr>
+
+                <div class="config_item_bloco config_item_meta">
+
+                    <div class="config_item_bloco_info">
+                        <h3>Sua meta:</h3>
+                        <p>Configure aqui a sua meta de treinos.</p>
+                    </div>
+
+                    <div class="config_item_bloco_inputPlace">
+                        <label for="">
+                            <p>Atual: <span data-bind="text: meta"></span></p>
+                            <input type="text" placeholder="Ex.: 300" name="" id="" data-bind="value: tempMeta">
+                        </label>
+                        <button data-bind="click: saveMeta">
+                            <svg width="18" height="14" viewBox="0 0 18 14" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M6.54998 13.0125L0.849976 7.31249L2.27498 5.88749L6.54998 10.1625L15.725 0.987488L17.15 2.41249L6.54998 13.0125Z"
+                                    fill="white" />
+                            </svg>
+                        </button>
+                    </div>
+
+                </div>
+
+                <div class="config_item_bloco config_item_meta">
+
+                    <div class="config_item_bloco_info">
+                        <h3>Seu progresso:</h3>
+                        <p>Já possui algum progresso? Insira aqui.</p>
+                    </div>
+
+                    <div class="config_item_bloco_inputPlace">
+                        <label for="">
+                            <p>Atual: <span data-bind="text: treinosInseridos"></span></p>
+                            <input type="text" placeholder="Ex.: 150" name="" id="" data-bind="value: tempTreinosInseridos">
+                        </label>
+                        <button data-bind="click: savetreinosInseridos">
+                            <svg width="18" height="14" viewBox="0 0 18 14" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M6.54998 13.0125L0.849976 7.31249L2.27498 5.88749L6.54998 10.1625L15.725 0.987488L17.15 2.41249L6.54998 13.0125Z"
+                                    fill="white" />
+                            </svg>
+                        </button>
+                    </div>
+
+                </div>
+
+                <hr>
+
+            </div>
+
+            <!--USER NAME | USER NAME | USER NAME -->
 
         </div>
 
@@ -78,7 +205,7 @@
                 </div>
 
                 <div id="home_bloco_meta_inProgressMeta">
-                    <h2 data-bind="text: user.currentGoalText"></h2>
+                    <h2 data-bind="text: metaAtingidaRealTexto"></h2>
                     <p>
                         treinos <br>
                         realizados
@@ -86,7 +213,7 @@
                 </div>
 
                 <div id="home_bloco_meta_finalMeta">
-                    <h2 data-bind="text: user.goalText"></h2>
+                    <h2 data-bind="text: metaTexto"></h2>
                     <p>
                         da minha <br>
                         meta:

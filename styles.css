@@ -17,6 +17,11 @@
 
     --colorWhite: rgba(255, 255, 255, 1);
     --colorWhite20: rgba(255, 255, 255, 0.20);
+
+    --colorBlack: rgba(0, 0, 0, 1);
+    --colorBlack2: rgba(32, 32, 32, 1);
+
+    --sombraForte: drop-shadow(0 0 30px rgba(0, 0, 0, 0.3));
 }
 
 * {
@@ -72,6 +77,52 @@ button {
     }
 }
 
+#menu {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    background-color: var(--colorBlack2);
+    filter: var(--sombraForte);
+    z-index: 100;
+}
+
+.menu_item {
+    width: calc(calc(100% / 3) - 20px);
+    max-width: calc(400px / 3);
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    z-index: 101;
+    opacity: .3;
+    cursor: pointer;
+    border-radius: 10px;
+
+    & svg {
+        height: 20px;
+    }
+
+    & p {
+        color: #FFF;
+        font-size: 13px;
+    }
+}
+
+.menu_itemSelected {
+    opacity: 1;
+    height: 60px;
+    background-color: var(--colorWhite20);
+    border: solid 1px var(--colorWhite20);
+}
+
 .screen {
     width: 100%;
     min-height: 100dvh;
@@ -87,7 +138,7 @@ button {
 }
 
 .screenInside {
-    width: 94%;
+    width: 100%;
     max-width: 350px;
 }
 
@@ -167,6 +218,64 @@ button {
     }
 }
 
+#config_item {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    gap: 20px;
+
+    & hr {
+        border-color: var(--colorWhite20);
+    }
+}
+
+.config_item_bloco {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    gap: 10px;
+}
+
+.config_item_bloco_info,
+.config_item_bloco_inputPlace {
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    & h3, p {
+        color: #FFF;
+        font-size: 20px;
+    }
+    
+    & label {
+        width: calc(100% - 50px);
+        display: flex;
+        flex-flow: column;
+        gap: 10px;
+    }
+}
+
+.config_item_bloco_inputPlace p {
+    font-size: 14px;
+}
+
+.config_item_meta .config_item_bloco_info {
+    max-width: calc(50% - 5px);
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 5px;
+
+    & p {
+        font-size: 14px;
+    }
+}
+
+.config_item_meta .config_item_bloco_inputPlace {
+    max-width: calc(50% - 5px);
+}
 
 /* CONFIG CONFIG CONFIG */
 
@@ -238,7 +347,7 @@ button {
     align-items: center;
     gap: 15px;
     top: -13px;
-    left: -20px;
+    left: -15px;
 
     & h2 {
         font-size: 100px;
@@ -256,7 +365,7 @@ button {
     align-items: center;
     gap: 15px;
     bottom: -13px;
-    right: -20px;
+    right: -15px;
 
     & h2 {
         font-size: 100px;
