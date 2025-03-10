@@ -1,24 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
 :root {
-    --mainColor_HSL: var(--mainColor_Roxo);
-
+    
     --mainColor: hsl(var(--mainColor_HSL));
     --mainColor80: hsl(var(--mainColor_HSL), 0.80);
     --mainColor60: hsl(var(--mainColor_HSL), 0.60);
     --mainColor40: hsl(var(--mainColor_HSL), 0.40);
     --mainColor20: hsl(var(--mainColor_HSL), 0.20);
-
+    
+    --mainColor_HSL: var(--mainColor_Rosa);
     --mainColor_Rosa: 297, 100%, 42%;
     --mainColor_Roxo: 267, 100%, 63%;
-    --mainColor_Vermelho: 0 100% 46%;
-    --mainColor_Verde: 127 100% 27%;
-    --mainColor_Azul: 214 100% 49%;
+    --mainColor_Vermelho: 0, 100%, 46%;
+    --mainColor_Verde: 127, 100%, 27%;
+    --mainColor_Azul: 214, 100%, 49%;
 
     --colorWhite: rgba(255, 255, 255, 1);
     --colorWhite20: rgba(255, 255, 255, 0.20);
 
     --colorBlack: rgba(0, 0, 0, 1);
+    --colorBlack50: rgba(0, 0, 0, 0.5);
     --colorBlack2: rgba(32, 32, 32, 1);
 
     --sombraForte: drop-shadow(0 0 30px rgba(0, 0, 0, 0.3));
@@ -29,7 +30,7 @@
     margin: 0;
     padding: 0;
     user-select: none;
-    -webkit-tap-highlight-color: none;
+    -webkit-tap-highlight-color: none !important;
     font-family: 'Poppins';
     line-height: 130%;
 }
@@ -105,6 +106,7 @@ button {
     opacity: .3;
     cursor: pointer;
     border-radius: 10px;
+    -webkit-tap-highlight-color: none !important;
 
     & svg {
         height: 20px;
@@ -121,6 +123,7 @@ button {
     height: 60px;
     background-color: var(--colorWhite20);
     border: solid 1px var(--colorWhite20);
+    -webkit-tap-highlight-color: none !important;
 }
 
 .screen {
@@ -131,6 +134,12 @@ button {
     flex-flow: column;
     justify-content: flex-start;
     align-items: center;
+}
+
+.screen_title {
+    color: #FFF;
+    font-size: 40px;
+    font-weight: bold;
 }
 
 .screen:has(#config) {
@@ -154,6 +163,40 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1000;
+}
+
+.modal {
+    width: 100%;
+    min-height: 100dvh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.modal .screenInside {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    z-index: 2001;
+}
+
+.modal_background {
+    width: 100%;
+    min-height: 100dvh;
+    background-color: var(--colorBlack50);
+    backdrop-filter: blur(5px);
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 /* UNIVERSAL UNIVERSAL UNIVERSAL */
@@ -277,6 +320,37 @@ button {
     max-width: calc(50% - 5px);
 }
 
+.config_item_mainColor {
+    justify-content: space-between;
+}
+
+.config_item_selectColor{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    color: #FFF;
+    font-size: 12px;
+    opacity: .5;
+}
+
+.config_item_selectColor_color {
+    width: 48px;
+    height: 48px;
+    border: solid 2px transparent;
+    border-radius: 10px;
+    background-color: #FFF;
+}
+
+.config_item_selectColor.selected {
+    opacity: 1;
+
+    & .config_item_selectColor_color {
+        border-color: #FFF;
+    }
+}
+
 /* CONFIG CONFIG CONFIG */
 
 /* HOME HOME HOME */
@@ -285,12 +359,6 @@ button {
     display: flex;
     flex-flow: column;
     gap: 20px;
-}
-
-#home_title {
-    color: #FFF;
-    font-size: 40px;
-    font-weight: bold;
 }
 
 .blocoPadrao {
@@ -369,5 +437,37 @@ button {
 
     & h2 {
         font-size: 100px;
+    }
+}
+
+
+
+
+.itemTreinoLista {
+    width: 100%;
+    max-width: 353px;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.itemTreinoLista_treinoID {
+    display: flex;
+    flex-flow: column;
+
+    & p {
+        color: var(--colorWhite);
+    }
+
+    & p:first-of-type {
+        font-size: 20px;
+    }
+
+    & p:last-of-type {
+        font-size: 40px;
+        font-weight: 800;
+        margin-top: -5px;
     }
 }

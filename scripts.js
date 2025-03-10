@@ -2,21 +2,20 @@ function MyKO() {
     const self = this;
 
     // Informações dos treinos
-    self.treinos = ko.observableArray([]);
+    self.treinos = ko.observableArray([]); // salvar
 
     // Informações do usuário
     self.user = {
         name: ko.observable('você'),
         lastName: ko.observable(''),
-        age: ko.observable(''),
-        goal: ko.observable(0),
-    };
+        age: ko.observable('')
+    }; // salvar
 
     // Informações das metas
-    self.meta = ko.observable(0);
+    self.meta = ko.observable(0); // salvar
     self.metaTexto = ko.computed(() => self.meta().toString().padStart(3, '0'));
 
-    self.treinosInseridos = ko.observable(0);
+    self.treinosInseridos = ko.observable(0); // salvar
 
     self.metaAtingida = ko.computed(() => self.treinos().length);
     self.metaAtingidaReal = ko.computed(() => self.metaAtingida() + self.treinosInseridos());
@@ -28,18 +27,15 @@ function MyKO() {
         self.actualPage(page);
     };
 
-    // Teste - adiciona um treino na lista
-    self.teste = function () {
-        self.treinos.push({}); // Adiciona um treino fictício
-    };
-
     // Edição do nome do usuário
     self.tempName = ko.observable('');
     self.saveName = function () {
         if (self.tempName().trim().length > 0) {
             self.user.name(self.tempName().trim());
         }
+
         self.tempName('');
+        self.salvarDados()
     };
 
     // Edição da meta
@@ -49,7 +45,9 @@ function MyKO() {
         if (!isNaN(value)) {
             self.meta(value);
         }
+
         self.tempMeta('');
+        self.salvarDados()
     };
 
     // Edição do número de treinos inseridos
@@ -59,8 +57,83 @@ function MyKO() {
         if (!isNaN(value)) {
             self.treinosInseridos(value);
         }
+
         self.tempTreinosInseridos('');
+        self.salvarDados()
     };
+
+
+
+
+
+
+
+
+    self.adicionarItem = function () {
+
+    }
+
+    self.modalAdicionarItem = ko.observable(false);
+    self.abrirModalAdicionarItem = function () {
+        self.modalAdicionarItem(!self.modalAdicionarItem())
+    }
+
+
+
+
+
+    self.selectedColor = ko.observable(0)
+    const colors = [
+        'var(--mainColor_Rosa)',
+        'var(--mainColor_Roxo)',
+        'var(--mainColor_Vermelho)',
+        'var(--mainColor_Verde)',
+        'var(--mainColor_Azul)'
+    ];
+    self.selectThisColor = function (color) {
+        self.selectedColor(color)
+        self.salvarDados()
+        document.documentElement.style.setProperty('--mainColor_HSL', colors[color]);
+    }
+
+
+
+
+    // Salvar dados em localStorage
+    self.salvarDados = function () {
+        const data = {
+            user: ko.toJS(self.user),
+            treinos: ko.toJS(self.treinos),
+            meta: self.meta(),
+            treinosInseridos: self.treinosInseridos(),
+            selectedColor: self.selectedColor()
+        };
+
+        localStorage.setItem('appData', JSON.stringify(data));
+    };
+
+    self.pegarDados = function () {
+        const savedData = localStorage.getItem('appData');
+
+        if (savedData) {
+            const parsedData = JSON.parse(savedData);
+
+            self.user.name(parsedData.user.name || '');
+            self.user.lastName(parsedData.user.lastName || '');
+            self.user.age(parsedData.user.age || '');
+
+            self.treinos(parsedData.treinos || []);
+            self.meta(parsedData.meta || 0);
+            self.treinosInseridos(parsedData.treinosInseridos || 0);
+
+            // Restaurando a cor selecionada
+            self.selectedColor(parsedData.selectedColor || 0);
+
+            document.documentElement.style.setProperty('--mainColor_HSL', colors[self.selectedColor()]);
+        }
+    };
+
+    window.onload = () => { self.pegarDados(); }
 }
 
 ko.applyBindings(new MyKO());
