@@ -47,6 +47,10 @@ button {
     cursor: pointer;
 }
 
+li {
+    list-style: none;
+}
+
 #header {
     position: absolute;
     left: 0;
@@ -149,6 +153,9 @@ button {
 .screenInside {
     width: 100%;
     max-width: 350px;
+    display: flex;
+    flex-flow: column;
+    gap: 20px;
 }
 
 .mainActionButton {
@@ -448,18 +455,15 @@ button {
     max-width: 353px;
     display: flex;
     flex-flow: row;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
+    align-items: stretch;
     padding: 15px 20px;
+    color: #FFF;
 }
 
 .itemTreinoLista_treinoID {
     display: flex;
     flex-flow: column;
-
-    & p {
-        color: var(--colorWhite);
-    }
 
     & p:first-of-type {
         font-size: 20px;
@@ -469,5 +473,53 @@ button {
         font-size: 40px;
         font-weight: 800;
         margin-top: -5px;
+    }
+}
+
+
+
+
+
+
+
+#treinos {
+    display: flex;
+    flex-flow: column;
+    gap: 20px;
+
+    & ul {
+        width: 100%;
+        display: flex;
+        flex-flow: column;
+        gap: 10px;
+    }
+}
+
+.itemTreinoLista_infos {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+
+    &>p {
+        font-size: 12px;
+        opacity: .6;
+    }
+}
+
+.itemTreinoLista_infos_treinos {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+    align-items: stretch;
+    gap: 5px;
+
+    & div {
+        padding: 3px 6px;
+        font-size: 13px;
+        background-color: var(--mainColor);
+        border-radius: 6px;
     }
 }

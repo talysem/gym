@@ -1,8 +1,21 @@
 function MyKO() {
     const self = this;
 
+    // Funções universais
+    self.fillNumeroParaId = function(numero) {
+        return numero.toString().padStart(3, '0');
+    }
+
+
+
+
+
+
+
     // Informações dos treinos
-    self.treinos = ko.observableArray([]); // salvar
+    self.treinos = ko.observableArray([
+        { id: 1, data: '17/03/2025', sentimento: '1', tempo: 5, sets: []}
+    ]);
 
     // Informações do usuário
     self.user = {
@@ -13,25 +26,52 @@ function MyKO() {
 
     // Informações das metas
     self.meta = ko.observable(0); // salvar
-    self.metaTexto = ko.computed(() => self.meta().toString().padStart(3, '0'));
+    self.metaTexto = ko.computed(() => self.fillNumeroParaId(self.meta()));
 
     self.treinosInseridos = ko.observable(0); // salvar
 
     self.metaAtingida = ko.computed(() => self.treinos().length);
     self.metaAtingidaReal = ko.computed(() => self.metaAtingida() + self.treinosInseridos());
-    self.metaAtingidaRealTexto = ko.computed(() => self.metaAtingidaReal().toString().padStart(3, '0'));
+    self.metaAtingidaRealTexto = ko.computed(() => self.fillNumeroParaId(self.metaAtingidaReal()));
+
+
+
+
+
+
+
+
+
+
 
     // Navegação
-    self.actualPage = ko.observable(0);
+    self.actualPage = ko.observable(2);
     self.openThisPage = function (page) {
         self.actualPage(page);
     };
+
+
+
+
+
+
+
+
+
+
+
+
 
     // Edição do nome do usuário
     self.tempName = ko.observable('');
     self.saveName = function () {
         if (self.tempName().trim().length > 0) {
-            self.user.name(self.tempName().trim());
+            if(self.tempName().toString().toLowerCase() == 'gil' || self.tempName().toString().toLowerCase() == 'gilvane') {
+                self.tempName('Nojeira')
+                self.user.name(self.tempName());
+            } else {
+                self.user.name(self.tempName().trim());
+            }
         }
 
         self.tempName('');
@@ -69,6 +109,74 @@ function MyKO() {
 
 
 
+
+
+
+
+
+    self.setsTreinos = ko.observable({
+        triceps: ko.observableArray([
+            {
+                id: ko.observable(1),
+                data: ko.observable('09/03/2025'), // Data do treino
+                exercicios: ko.observableArray([
+                    {
+                        nome: ko.observable('Tríceps Testa'),
+                        carga: ko.observable(20), // Exemplo: 20kg
+                        reps: ko.observable(10), // Exemplo: 10 repetições
+                        tempo: ko.observable(30) // Exemplo: 30 segundos
+                    },
+                    {
+                        nome: ko.observable('Tríceps Pulley'),
+                        carga: ko.observable(15),
+                        reps: ko.observable(12),
+                        tempo: ko.observable(40)
+                    }
+                ])
+            },
+            {
+                id: ko.observable(2),
+                data: ko.observable('10/03/2025'),
+                exercicios: ko.observableArray([
+                    {
+                        nome: ko.observable('Tríceps Francês'),
+                        carga: ko.observable(18),
+                        reps: ko.observable(8),
+                        tempo: ko.observable(35)
+                    },
+                    {
+                        nome: ko.observable('Tríceps Mergulho'),
+                        carga: ko.observable(0), // Peso corporal
+                        reps: ko.observable(15),
+                        tempo: ko.observable(45)
+                    }
+                ])
+            }
+        ])
+    });
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     self.adicionarItem = function () {
 
     }
@@ -77,6 +185,18 @@ function MyKO() {
     self.abrirModalAdicionarItem = function () {
         self.modalAdicionarItem(!self.modalAdicionarItem())
     }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -95,6 +215,16 @@ function MyKO() {
         self.salvarDados()
         document.documentElement.style.setProperty('--mainColor_HSL', colors[color]);
     }
+
+
+
+
+
+
+
+
+
+
 
 
 
